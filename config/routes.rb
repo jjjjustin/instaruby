@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  root 'posts#index'
+
+
+  resources :posts do
+    member do
+      put 'like'
+    end
+    collection do
+      get 'user/:name' => 'posts#user', as: 'user'
+    end
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
